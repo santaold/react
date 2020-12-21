@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import AllUsers from "./components/all-users/AllUsers";
+import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
+import AllPosts from "./components/all-posts/AllPosts";
 
 
 export class App extends Component {
@@ -6,7 +9,29 @@ export class App extends Component {
     render() {
 
         return (
-            <div></div>
+            <Router>
+                <div>
+
+
+                    <Link to={'/users'}>
+                        users
+                    </Link>
+                    <br/>
+                    <Link to={'/posts'}>
+                        posts
+                    </Link>
+
+                    <Switch>
+                        <Route path={'/users'} render={() => {
+                            return <AllUsers/>;
+                        }}/>
+                        <Route path={'/posts'} render={() => {
+                            return <AllPosts/>;
+                        }}/>
+
+                    </Switch>
+                </div>
+            </Router>
         );
     }
 }
